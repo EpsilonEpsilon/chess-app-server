@@ -1,16 +1,25 @@
-import express, { Request, Response } from 'express'
+import express from 'express'
+import "dotenv/config"
+import router from "./routes";
+import helmet from "helmet";
+import {xssFilter} from "./middleware/xssFilter";
+
 
 const app = express()
 const port = process.env.PORT || 8080
 
-app.get('/', (_req: Request, res: Response) => {
-    return res.send('Express Typescript on Vercel')
-})
+app.use(express.json());
+app.use(helmet());
+app.use(xssFilter);
 
-app.get('/ping', (_req: Request, res: Response) => {
-    return res.send('pong 🏓')
-})
+
+app.use("/api", router);
+app.use(
+    express.urlencoded({
+        extended: true,
+    }),
+);
 
 app.listen(port, () => {
-    return console.log(`Server is listening on ${port}`)
+    console.log(`Chess application server listening on ${port}`);
 })
