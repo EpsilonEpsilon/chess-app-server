@@ -45,5 +45,8 @@
     "@lib": "./dist/lib",
     "@middleware": "./dist/middleware",
     "@routes": "./dist/routes"
+  },
+  "engines": {
+    "node": ">=18.13.0"
   }
 }
