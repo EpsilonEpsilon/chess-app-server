@@ -1,8 +1,9 @@
 import express from 'express'
 import "dotenv/config"
-import router from "./routes";
 import helmet from "helmet";
-import {xssFilter} from "./middleware/xssFilter";
+import {xssFilter} from "@middleware/xssFilter";
+import {router} from "@routes/index";
+import 'module-alias/register';
 
 
 const app = express()

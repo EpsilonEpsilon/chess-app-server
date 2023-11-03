@@ -8,12 +8,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.registerController = void 0;
-const createError_1 = require("../../lib/createError");
+const Error_1 = __importDefault(require("../../lib/Error"));
+const user_model_1 = require("@database/models/user.model");
 const registerController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const error = (0, createError_1.createError)();
-    for (let key of ["name", "email", "password", "passwordConfirmation"]) {
+    const error = new Error_1.default();
+    const bodyFields = ["name", "email", "password", "passwordConfirmation"];
+    for (let key of bodyFields) {
         // @ts-ignore
         if (!req.body[key])
             error.add(key, `${key} is required`);
@@ -22,6 +27,13 @@ const registerController = (req, res) => __awaiter(void 0, void 0, void 0, funct
         res.status(400).json(error.send());
         return;
     }
-    res.send("OK 200");
+    try {
+        // @ts-ignore
+        const user = yield (0, user_model_1.createUser)(req.body);
+        res.send({ message: "OK", user });
+    }
+    catch (e) {
+        res.send("Error");
+    }
 });
 exports.registerController = registerController;

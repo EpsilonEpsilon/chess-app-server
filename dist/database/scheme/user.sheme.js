@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.UserModel = void 0;
 const mongoose_1 = __importDefault(require("mongoose"));
 const emailRegExp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const userDataSchema = new mongoose_1.default.Schema({
@@ -28,4 +29,4 @@ const userDataSchema = new mongoose_1.default.Schema({
         type: String
     }
 });
-exports.default = userDataSchema;
+exports.UserModel = mongoose_1.default.model("User", userDataSchema);
