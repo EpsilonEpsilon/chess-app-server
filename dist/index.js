@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 require("dotenv/config");
 const helmet_1 = __importDefault(require("helmet"));
-const xssFilter_1 = require("./middleware/xssFilter");
+const xssFilter_1 = require("@middleware/xssFilter");
 const index_1 = require("@routes/index");
 require("module-alias/register");
 const app = (0, express_1.default)();
