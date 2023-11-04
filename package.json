@@ -40,11 +40,11 @@
     "add-build"
   ],
   "_moduleAliases": {
-    "@controller": "./dist/controller",
-    "@database": "./dist/database",
-    "@lib": "./dist/lib",
-    "@middleware": "./dist/middleware",
-    "@routes": "./dist/routes"
+    "@controller": "./src/controller",
+    "@database": "./src/database",
+    "@lib": "./src/lib",
+    "@middleware": "./src/middleware",
+    "@routes": "./src/routes"
   },
   "engines": {
     "node": ">=18.13.0"
