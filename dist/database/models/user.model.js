@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createUser = void 0;
-const index_1 = require("@database/index");
+const index_1 = require("../index");
 const createUser = (user) => __awaiter(void 0, void 0, void 0, function* () {
     const userDocument = new index_1.UserModel(user);
     return userDocument.save();

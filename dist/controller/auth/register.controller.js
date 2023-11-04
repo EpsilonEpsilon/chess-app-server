@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.registerController = void 0;
 const Error_1 = __importDefault(require("../../lib/Error"));
-const user_model_1 = require("@database/models/user.model");
+const user_model_1 = require("../../database/models/user.model");
 const registerController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const error = new Error_1.default();
     const bodyFields = ["name", "email", "password", "passwordConfirmation"];
