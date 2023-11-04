@@ -27,6 +27,7 @@ export const registerController = async(req:Request<{}, {}, IReqBody>, res:Respo
         const user = await createUser(req.body);
         res.send({message:"OK", user});
     }catch (e){
+        console.log(e)
         res.send("Error");
     }
 

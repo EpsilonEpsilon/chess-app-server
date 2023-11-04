@@ -33,6 +33,7 @@ const registerController = (req, res) => __awaiter(void 0, void 0, void 0, funct
         res.send({ message: "OK", user });
     }
     catch (e) {
+        console.log(e);
         res.send("Error");
     }
 });
