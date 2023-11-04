@@ -5,9 +5,6 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon src/index.ts",
-    "build": "rimraf dist && tsc",
-    "ts.check": "tsc --project tsconfig.json",
-    "add-build": "git add dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -40,11 +37,11 @@
     "add-build"
   ],
   "_moduleAliases": {
-    "@controller": "./src/controller",
-    "@database": "./src/database",
-    "@lib": "./src/lib",
-    "@middleware": "./src/middleware",
-    "@routes": "./src/routes"
+    "@controller": "./dist/controller",
+    "@database": "./dist/database",
+    "@lib": "./dist/lib",
+    "@middleware": "./dist/middleware",
+    "@routes": "./dist/routes"
   },
   "engines": {
     "node": ">=18.13.0"
