@@ -31,11 +31,6 @@
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.2.2"
   },
-  "pre-commit": [
-    "ts.check",
-    "build",
-    "add-build"
-  ],
   "_moduleAliases": {
     "@controller": "./dist/controller",
     "@database": "./dist/database",
