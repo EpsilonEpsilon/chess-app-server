@@ -8,33 +8,30 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.registerController = void 0;
-const Error_1 = __importDefault(require("../../lib/Error"));
 const user_model_1 = require("../../database/models/user.model");
-const registerController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const error = new Error_1.default();
+const index_1 = require("../../model/index");
+const index_2 = require("../../lib/index");
+const registerController = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    const response = new index_1.ResponseBuilder();
     const bodyFields = ["name", "email", "password", "passwordConfirmation"];
     for (let key of bodyFields) {
-        // @ts-ignore
         if (!req.body[key])
-            error.add(key, `${key} is required`);
+            response.addError({ field: key, error: `${key} is required` });
     }
-    if (error.hasError()) {
-        res.status(400).json(error.send());
-        return;
-    }
+    if (response.hasError())
+        return res.status(400).json(response.build());
+    const body = req.body;
     try {
-        // @ts-ignore
-        const user = yield (0, user_model_1.createUser)(req.body);
-        res.send({ message: "OK", user });
+        const user = yield (0, user_model_1.createUser)(body);
+        const token = (0, index_2.createJwtToken)({ email: user.email, password: user.password });
+        response.setData({ token: token });
+        return res.send(response.build());
     }
     catch (e) {
-        console.log(e);
-        res.send("Error");
+        const response = new index_1.ResponseBuilder();
+        response.addError({ error: "Creating new user error" });
+        return res.status(400).send(response.build());
     }
 });
-exports.registerController = registerController;
+exports.default = registerController;

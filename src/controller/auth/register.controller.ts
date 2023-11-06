@@ -1,6 +1,8 @@
-import {Request, Response} from "express";
-import Error from "../../lib/Error";
+import {NextFunction, Request, Response} from "express";
 import {createUser} from "@database/models/user.model";
+import {IUser} from "@database/scheme/user.sheme";
+import {ErrorBuilder, ResponseBuilder} from "@model/index";
+import {createJwtToken} from "@lib/index";
 
 interface IReqBody{
     name:string | undefined,
@@ -8,27 +10,30 @@ interface IReqBody{
     password:string | undefined,
     passwordConfirmation:string | undefined,
 }
-export const registerController = async(req:Request<{}, {}, IReqBody>, res:Response)=>{
-    const error = new Error();
-    const bodyFields = ["name", "email", "password", "passwordConfirmation"];
+
+type ReqBodyKey = "name" | "email" | "password" | "passwordConfirmation";
+const registerController = async(req:Request<{}, {}, IReqBody>, res:Response, next:NextFunction)=>{
+
+    const response = new ResponseBuilder();
+    const bodyFields:ReqBodyKey[] = ["name", "email", "password", "passwordConfirmation"];
     for(let key of bodyFields){
-        // @ts-ignore
-        if(!req.body[key]) error.add(key, `${key} is required`);
+        if(!req.body[key]) response.addError({field:key,error:`${key} is required`});
     }
 
+    if(response.hasError()) return res.status(400).json(response.build());
 
-    if(error.hasError()){
-        res.status(400).json(error.send());
-        return;
-    }
+    const body = req.body as IUser;
 
     try{
-        // @ts-ignore
-        const user = await createUser(req.body);
-        res.send({message:"OK", user});
+        const user = await createUser(body);
+        const token = createJwtToken({email:user.email, password:user.password});
+        response.setData({token:token})
+        return res.send(response.build());
     }catch (e){
-        console.log(e)
-        res.send("Error");
+        const response = new ResponseBuilder();
+        response.addError({error:"Creating new user error"});
+        return res.status(400).send(response.build());
     }
-
 }
+
+export default registerController;
