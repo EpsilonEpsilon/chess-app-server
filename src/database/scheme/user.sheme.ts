@@ -4,7 +4,7 @@ import bcrypt from "bcrypt";
 const SALT = 10;
 
 export interface IUser extends mongoose.Document{
-    name:string,
+    username:string,
     email:string,
     password:string,
     passwordConfirmation:string,
@@ -14,7 +14,7 @@ export interface IUser extends mongoose.Document{
 const emailRegExp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
 
 const userDataSchema = new mongoose.Schema<IUser>({
-    name:{
+    username:{
         required:true,
         type:String,
     },

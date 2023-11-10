@@ -5,10 +5,11 @@ import {authorization, xssFilter} from "@middleware/index";
 import {globalRouter} from "@routes/index";
 import 'module-alias/register';
 import fileUpload from "express-fileupload";
-
+import cors from "cors"
 const app = express()
 const port = process.env.PORT || 8080
 
+app.use(cors());
 app.use(fileUpload());
 app.use(express.json());
 app.use(helmet());

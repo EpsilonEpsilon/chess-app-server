@@ -18,7 +18,7 @@ const bcrypt_1 = __importDefault(require("bcrypt"));
 const SALT = 10;
 const emailRegExp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const userDataSchema = new mongoose_1.default.Schema({
-    name: {
+    username: {
         required: true,
         type: String,
     },

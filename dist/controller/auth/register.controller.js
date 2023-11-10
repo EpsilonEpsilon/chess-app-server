@@ -14,13 +14,13 @@ const index_1 = require("../../model/index");
 const index_2 = require("../../lib/index");
 const registerController = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const response = new index_1.ResponseBuilder();
-    const bodyFields = ["name", "email", "password", "passwordConfirmation"];
+    const bodyFields = ["username", "email", "password", "passwordConfirmation"];
     for (let key of bodyFields) {
         if (!req.body[key])
             response.addError({ field: key, error: `${key} is required` });
     }
     if (response.hasError())
-        return res.status(400).json(response.build());
+        return res.status(400).send(response.build());
     const body = req.body;
     try {
         const user = yield (0, user_model_1.createUser)(body);

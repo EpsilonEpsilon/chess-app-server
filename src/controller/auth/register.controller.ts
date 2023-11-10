@@ -5,22 +5,20 @@ import {ErrorBuilder, ResponseBuilder} from "@model/index";
 import {createJwtToken} from "@lib/index";
 
 interface IReqBody{
-    name:string | undefined,
+    username:string | undefined,
     email:string | undefined,
     password:string | undefined,
     passwordConfirmation:string | undefined,
 }
 
-type ReqBodyKey = "name" | "email" | "password" | "passwordConfirmation";
+type ReqBodyKey = "username" | "email" | "password" | "passwordConfirmation";
 const registerController = async(req:Request<{}, {}, IReqBody>, res:Response, next:NextFunction)=>{
-
     const response = new ResponseBuilder();
-    const bodyFields:ReqBodyKey[] = ["name", "email", "password", "passwordConfirmation"];
+    const bodyFields:ReqBodyKey[] = ["username", "email", "password", "passwordConfirmation"];
     for(let key of bodyFields){
         if(!req.body[key]) response.addError({field:key,error:`${key} is required`});
     }
-
-    if(response.hasError()) return res.status(400).json(response.build());
+    if(response.hasError()) return res.status(400).send(response.build());
 
     const body = req.body as IUser;
 
