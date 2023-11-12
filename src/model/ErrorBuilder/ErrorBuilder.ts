@@ -1,11 +1,9 @@
-type ResponseError = ResponseErrorField | ResponsePlainError;
+type ResponseError = ResponseErrorField;
 
 interface ResponseErrorField{
-    field:string,
+    field?:string,
     error:string,
-}
-interface ResponsePlainError{
-    error:string,
+    translationIdentifier?:string,
 }
 class ErrorBuilder{
     private errors:ResponseError[] = [];

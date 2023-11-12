@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+
 class Database{
     // @ts-ignore
     private connection:mongoose.Connection

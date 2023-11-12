@@ -30,7 +30,7 @@ const registerController = (req, res, next) => __awaiter(void 0, void 0, void 0,
     }
     catch (e) {
         const response = new index_1.ResponseBuilder();
-        response.addError({ error: "Creating new user error" });
+        response.addError({ error: "Creating new user error", translationIdentifier: "CREATE_NEW_USER_ERROR" });
         return res.status(400).send(response.build());
     }
 });

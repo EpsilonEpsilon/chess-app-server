@@ -1,7 +1,7 @@
 import {NextFunction, Request, Response} from "express";
 import {createUser} from "@database/models/user.model";
 import {IUser} from "@database/scheme/user.sheme";
-import {ErrorBuilder, ResponseBuilder} from "@model/index";
+import {ResponseBuilder} from "@model/index";
 import {createJwtToken} from "@lib/index";
 
 interface IReqBody{
@@ -29,7 +29,7 @@ const registerController = async(req:Request<{}, {}, IReqBody>, res:Response, ne
         return res.send(response.build());
     }catch (e){
         const response = new ResponseBuilder();
-        response.addError({error:"Creating new user error"});
+        response.addError({error:"Creating new user error", translationIdentifier:"CREATE_NEW_USER_ERROR"});
         return res.status(400).send(response.build());
     }
 }
