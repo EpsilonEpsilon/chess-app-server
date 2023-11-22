@@ -34,7 +34,7 @@ class App {
     }
     initRoutes() {
         this.app.use("/api", index_2.globalRouter);
-        this.app.use("/docs", swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(docs_1.openapiSpecification));
+        this.app.use("/docs", swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(docs_1.openapiSpecification, { customJs: "https://cdn.jsdelivr.net/npm/swagger-ui-express@5.0.0/index.min.js" }));
         this.app.use(express_1.default.urlencoded({
             extended: true,
         }));
