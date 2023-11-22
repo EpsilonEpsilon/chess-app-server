@@ -34,7 +34,7 @@ class App{
     private initRoutes(){
         this.app.use("/api", globalRouter);
 
-        this.app.use("/docs", swaggerUi.serve ,swaggerUi.setup(openapiSpecification, { customJs:"https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.10.3/swagger-ui.js" }))
+        this.app.use("/docs", swaggerUi.serve ,swaggerUi.setup(openapiSpecification, { customCssUrl: CSS_URL }))
         this.app.use(
             express.urlencoded({
                 extended: true,
