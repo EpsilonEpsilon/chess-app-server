@@ -35,7 +35,7 @@ class App {
     }
     initRoutes() {
         this.app.use("/api", index_2.globalRouter);
-        this.app.use("/docs", swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(docs_1.openapiSpecification, { customCssUrl: CSS_URL }));
+        this.app.use("/docs", swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(docs_1.openapiSpecification, { customJs: "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.10.3/swagger-ui.js" }));
         this.app.use(express_1.default.urlencoded({
             extended: true,
         }));
