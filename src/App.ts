@@ -8,7 +8,7 @@ import fileUpload from "express-fileupload";
 import cors from "cors"
 import swaggerUi from "swagger-ui-express";
 import {openapiSpecification} from "./docs";
-
+const CSS_URL = "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css";
 const PORT =  process.env.PORT
 class App{
     private app:Express
@@ -33,7 +33,7 @@ class App{
 
     private initRoutes(){
         this.app.use("/api", globalRouter);
-        this.app.use("/docs", swaggerUi.serve ,swaggerUi.setup(openapiSpecification))
+        this.app.use("/docs", swaggerUi.serve ,swaggerUi.setup(openapiSpecification, { customCssUrl: CSS_URL }))
         this.app.use(
             express.urlencoded({
                 extended: true,
