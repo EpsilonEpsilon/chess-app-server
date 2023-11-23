@@ -16,6 +16,7 @@ class App{
         this.app =  express();
     }
     public bootstrap(){
+        this.app.use("/docs", swaggerUi.serve ,swaggerUi.setup(openapiSpecification, {customCssUrl:"https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.3.0/swagger-ui.min.css"}))
         this.initMiddlewares();
         this.initRoutes();
         this.runServer();
@@ -34,7 +35,6 @@ class App{
     }
 
     private initRoutes(){
-        this.app.use("/docs", swaggerUi.serve ,swaggerUi.setup(openapiSpecification, {customCssUrl:"https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.3.0/swagger-ui.min.css"}))
         this.app.use("/api", globalRouter);
         this.app.use(
             express.urlencoded({
