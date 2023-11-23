@@ -5,7 +5,7 @@ const options = {
     definition: {
         openapi: '3.0.0',
         info: {
-            title: 'Hello World',
+            title: 'Express.js chess-server documentation',
             version: '1.0.0',
         },
         servers: [
