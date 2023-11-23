@@ -75,3 +75,19 @@
  *    name: Posts
  *    description: posts of users
  */
+/**
+ * @swagger
+ * /posts:
+ *   get:
+ *     summary: Returns all posts
+ *     tags: [Posts]
+ *     responses:
+ *       200:
+ *         description: the list of the posts
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Post'
+ */
