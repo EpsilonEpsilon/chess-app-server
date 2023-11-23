@@ -30,7 +30,7 @@
     "module-alias": "^2.2.3",
     "mongoose": "^7.6.3",
     "swagger-jsdoc": "^6.2.8",
-    "swagger-ui-express": "^4.3.0",
+    "swagger-ui-express": "^5.0.0",
     "xss": "^1.0.14",
     "xss-clean": "^0.1.4"
   },

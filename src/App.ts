@@ -16,20 +16,17 @@ class App{
         this.app =  express();
     }
     public bootstrap(){
-        this.app.use("/docs", swaggerUi.serve ,swaggerUi.setup(openapiSpecification, {customCssUrl:"https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.3.0/swagger-ui.min.css"}))
+        this.app.use("/docs", swaggerUi.serve ,swaggerUi.setup(openapiSpecification))
         this.initMiddlewares();
         this.initRoutes();
         this.runServer();
     }
 
     private initMiddlewares(){
-        const cspDefaults = helmet.contentSecurityPolicy.getDefaultDirectives();
-        delete cspDefaults['upgrade-insecure-requests'];
-
         this.app.use(cors());
         this.app.use(fileUpload());
         this.app.use(express.json());
-        this.app.use(helmet.contentSecurityPolicy());
+        this.app.use(helmet());
         this.app.use(xssFilter());
         this.app.use(authorization())
     }
