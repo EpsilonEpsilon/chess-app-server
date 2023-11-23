@@ -43,6 +43,7 @@
     "@types/jsonwebtoken": "^9.0.4",
     "@types/lodash": "^4.14.200",
     "@types/node": "^20.9.0",
+    "@types/swagger-ui-dist": "^3.30.4",
     "nodemon": "^3.0.1",
     "pre-commit": "^1.2.2",
     "rimraf": "^5.0.5",

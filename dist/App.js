@@ -11,16 +11,15 @@ const index_2 = require("./routes/index");
 require("module-alias/register");
 const express_fileupload_1 = __importDefault(require("express-fileupload"));
 const cors_1 = __importDefault(require("cors"));
-require("swagger-ui-dist/swagger-ui.css");
-require("swagger-ui-dist/swagger-ui");
-require("swagger-ui-dist/swagger-initializer");
 const PORT = process.env.PORT;
+const pathToSwaggerUi = require('swagger-ui-dist').absolutePath();
 class App {
     constructor() {
         this.port = PORT || 8080;
         this.app = (0, express_1.default)();
     }
     bootstrap() {
+        this.app.use("/docs", express_1.default.static(pathToSwaggerUi));
         this.initMiddlewares();
         this.initRoutes();
         this.runServer();

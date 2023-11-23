@@ -286,6 +286,11 @@
   "resolved" "https://registry.npmjs.org/@types/swagger-jsdoc/-/swagger-jsdoc-6.0.4.tgz"
   "version" "6.0.4"
 
+"@types/swagger-ui-dist@^3.30.4":
+  "integrity" "sha512-FeOBc7uj4/lAIh4jkBzorvmNoUU9JgSccyDIRo0E9MJw9KQfSxlwpHCyKGnU9kfV5N5dEdfpY8wm7to3nSwTmA=="
+  "resolved" "https://registry.npmjs.org/@types/swagger-ui-dist/-/swagger-ui-dist-3.30.4.tgz"
+  "version" "3.30.4"
+
 "@types/swagger-ui-express@^4.1.6":
   "integrity" "sha512-UVSiGYXa5IzdJJG3hrc86e8KdZWLYxyEsVoUI4iPXc7CO4VZ3AfNP8d/8+hrDRIqz+HAaSMtZSqAsF3Nq2X/Dg=="
   "resolved" "https://registry.npmjs.org/@types/swagger-ui-express/-/swagger-ui-express-4.1.6.tgz"
