@@ -11,8 +11,9 @@ const index_2 = require("./routes/index");
 require("module-alias/register");
 const express_fileupload_1 = __importDefault(require("express-fileupload"));
 const cors_1 = __importDefault(require("cors"));
-const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
-const docs_1 = require("./docs");
+require("swagger-ui-dist/swagger-ui.css");
+require("swagger-ui-dist/swagger-ui");
+require("swagger-ui-dist/swagger-initializer");
 const PORT = process.env.PORT;
 class App {
     constructor() {
@@ -20,8 +21,6 @@ class App {
         this.app = (0, express_1.default)();
     }
     bootstrap() {
-        this.app.use("/docs", swagger_ui_express_1.default.serve);
-        this.app.get("/docs", swagger_ui_express_1.default.setup(docs_1.openapiSpecification));
         this.initMiddlewares();
         this.initRoutes();
         this.runServer();

@@ -6,8 +6,10 @@ import {globalRouter} from "@routes/index";
 import 'module-alias/register';
 import fileUpload from "express-fileupload";
 import cors from "cors"
-import swaggerUi from "swagger-ui-express";
-import {openapiSpecification} from "./docs";
+import "swagger-ui-dist/swagger-ui.css"
+import "swagger-ui-dist/swagger-ui"
+import "swagger-ui-dist/swagger-initializer";
+
 const PORT =  process.env.PORT
 class App{
     private app:Express
@@ -16,8 +18,6 @@ class App{
         this.app =  express();
     }
     public bootstrap(){
-        this.app.use("/docs", swaggerUi.serve)
-        this.app.get("/docs", swaggerUi.setup(openapiSpecification))
         this.initMiddlewares();
         this.initRoutes();
         this.runServer();

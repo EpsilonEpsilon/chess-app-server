@@ -2002,7 +2002,7 @@
   dependencies:
     "@apidevtools/swagger-parser" "10.0.3"
 
-"swagger-ui-dist@>=5.0.0":
+"swagger-ui-dist@^5.10.3", "swagger-ui-dist@>=5.0.0":
   "integrity" "sha512-fu3aozjxFWsmcO1vyt1q1Ji2kN7KlTd1vHy27E9WgPyXo9nrEzhQPqgxaAjbMsOmb8XFKNGo4Sa3Q+84Fh+pFw=="
   "resolved" "https://registry.npmjs.org/swagger-ui-dist/-/swagger-ui-dist-5.10.3.tgz"
   "version" "5.10.3"
