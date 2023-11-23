@@ -38,7 +38,7 @@ class App{
     }
 
     private initRoutes(){
-        this.app.use("/docs", swaggerUi.serve ,swaggerUi.setup(openapiSpecification, {customJs:"https://cdn.jsdelivr.net/npm/swagger-ui-express@5.0.0/index.min.js"}))
+        this.app.use("/docs", swaggerUi.serve ,swaggerUi.setup(openapiSpecification, {customCssUrl:"https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.6.3/swagger-ui.min.css"}))
         this.app.use("/api", globalRouter);
         this.app.use(
             express.urlencoded({
