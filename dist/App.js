@@ -35,7 +35,7 @@ class App {
         this.app.use((0, index_1.authorization)());
     }
     initRoutes() {
-        this.app.use("/docs", swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(docs_1.openapiSpecification, { customCssUrl: "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.3.0/swagger-ui.css" }));
+        this.app.use("/docs", swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(docs_1.openapiSpecification, { customCssUrl: "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.3.0/swagger-ui.min.css" }));
         this.app.use("/api", index_2.globalRouter);
         this.app.use(express_1.default.urlencoded({
             extended: true,
