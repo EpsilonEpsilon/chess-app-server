@@ -14,7 +14,6 @@ class App{
     private port = PORT || 8080
     constructor() {
         this.app =  express();
-        this.app.use("/docs", swaggerUi.serve ,swaggerUi.setup(openapiSpecification, {customJs:"https://cdn.jsdelivr.net/npm/swagger-ui-express@5.0.0/index.min.js"}))
     }
     public bootstrap(){
         this.initMiddlewares();
@@ -29,13 +28,17 @@ class App{
         this.app.use(cors());
         this.app.use(fileUpload());
         this.app.use(express.json());
-        this.app.use(helmet({contentSecurityPolicy: { directives: cspDefaults }}));
+        this.app.use(helmet.contentSecurityPolicy({
+            directives: {
+                scriptSrc: ["'self'", "https://cdn.jsdelivr.net"],
+            },
+        }));
         this.app.use(xssFilter());
         this.app.use(authorization())
     }
 
     private initRoutes(){
-
+        this.app.use("/docs", swaggerUi.serve ,swaggerUi.setup(openapiSpecification, {customJs:"https://cdn.jsdelivr.net/npm/swagger-ui-express@5.0.0/index.min.js"}))
         this.app.use("/api", globalRouter);
         this.app.use(
             express.urlencoded({
