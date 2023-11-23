@@ -20,7 +20,8 @@ class App {
         this.app = (0, express_1.default)();
     }
     bootstrap() {
-        this.app.use("/docs", swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(docs_1.openapiSpecification));
+        this.app.use("/docs", swagger_ui_express_1.default.serve);
+        this.app.get("/docs", swagger_ui_express_1.default.setup(docs_1.openapiSpecification));
         this.initMiddlewares();
         this.initRoutes();
         this.runServer();

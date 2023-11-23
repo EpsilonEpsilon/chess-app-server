@@ -16,7 +16,8 @@ class App{
         this.app =  express();
     }
     public bootstrap(){
-        this.app.use("/docs", swaggerUi.serve ,swaggerUi.setup(openapiSpecification))
+        this.app.use("/docs", swaggerUi.serve)
+        this.app.get("/docs", swaggerUi.setup(openapiSpecification))
         this.initMiddlewares();
         this.initRoutes();
         this.runServer();
