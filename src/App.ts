@@ -23,10 +23,13 @@ class App{
     }
 
     private initMiddlewares(){
+        const cspDefaults = helmet.contentSecurityPolicy.getDefaultDirectives();
+        delete cspDefaults['upgrade-insecure-requests'];
+
         this.app.use(cors());
         this.app.use(fileUpload());
         this.app.use(express.json());
-        this.app.use(helmet());
+        this.app.use(helmet({contentSecurityPolicy: { directives: cspDefaults }}));
         this.app.use(xssFilter());
         this.app.use(authorization())
     }

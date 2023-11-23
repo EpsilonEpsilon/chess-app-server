@@ -26,10 +26,12 @@ class App {
         this.runServer();
     }
     initMiddlewares() {
+        const cspDefaults = helmet_1.default.contentSecurityPolicy.getDefaultDirectives();
+        delete cspDefaults['upgrade-insecure-requests'];
         this.app.use((0, cors_1.default)());
         this.app.use((0, express_fileupload_1.default)());
         this.app.use(express_1.default.json());
-        this.app.use((0, helmet_1.default)());
+        this.app.use((0, helmet_1.default)({ contentSecurityPolicy: { directives: cspDefaults } }));
         this.app.use((0, index_1.xssFilter)());
         this.app.use((0, index_1.authorization)());
     }
