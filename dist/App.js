@@ -30,11 +30,7 @@ class App {
         this.app.use((0, cors_1.default)());
         this.app.use((0, express_fileupload_1.default)());
         this.app.use(express_1.default.json());
-        this.app.use(helmet_1.default.contentSecurityPolicy({
-            directives: {
-                scriptSrc: ["'self'", "https://cdn.jsdelivr.net"],
-            },
-        }));
+        this.app.use(helmet_1.default.contentSecurityPolicy());
         this.app.use((0, index_1.xssFilter)());
         this.app.use((0, index_1.authorization)());
     }

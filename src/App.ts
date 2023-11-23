@@ -28,11 +28,7 @@ class App{
         this.app.use(cors());
         this.app.use(fileUpload());
         this.app.use(express.json());
-        this.app.use(helmet.contentSecurityPolicy({
-            directives: {
-                scriptSrc: ["'self'", "https://cdn.jsdelivr.net"],
-            },
-        }));
+        this.app.use(helmet.contentSecurityPolicy());
         this.app.use(xssFilter());
         this.app.use(authorization())
     }
