@@ -2002,17 +2002,17 @@
   dependencies:
     "@apidevtools/swagger-parser" "10.0.3"
 
-"swagger-ui-dist@>=5.0.0":
+"swagger-ui-dist@>=4.11.0":
   "integrity" "sha512-fu3aozjxFWsmcO1vyt1q1Ji2kN7KlTd1vHy27E9WgPyXo9nrEzhQPqgxaAjbMsOmb8XFKNGo4Sa3Q+84Fh+pFw=="
   "resolved" "https://registry.npmjs.org/swagger-ui-dist/-/swagger-ui-dist-5.10.3.tgz"
   "version" "5.10.3"
 
-"swagger-ui-express@^5.0.0":
-  "integrity" "sha512-tsU9tODVvhyfkNSvf03E6FAk+z+5cU3lXAzMy6Pv4av2Gt2xA0++fogwC4qo19XuFf6hdxevPuVCSKFuMHJhFA=="
-  "resolved" "https://registry.npmjs.org/swagger-ui-express/-/swagger-ui-express-5.0.0.tgz"
-  "version" "5.0.0"
+"swagger-ui-express@^4.6.3":
+  "integrity" "sha512-CDje4PndhTD2HkgyKH3pab+LKspDeB/NhPN2OF1j+piYIamQqBYwAXWESOT1Yju2xFg51bRW9sUng2WxDjzArw=="
+  "resolved" "https://registry.npmjs.org/swagger-ui-express/-/swagger-ui-express-4.6.3.tgz"
+  "version" "4.6.3"
   dependencies:
-    "swagger-ui-dist" ">=5.0.0"
+    "swagger-ui-dist" ">=4.11.0"
 
 "tar@^6.1.11":
   "integrity" "sha512-/Wo7DcT0u5HUV486xg675HtjNd3BXZ6xDbzsCUZPt5iw8bTQ63bP0Raut3mvro9u+CUyq7YQd8Cx55fsZXxqLQ=="
