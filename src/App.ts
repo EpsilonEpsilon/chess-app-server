@@ -17,7 +17,7 @@ class App{
     }
     public bootstrap(){
         this.app.use("/docs", swaggerUi.serve)
-        this.app.get("/docs", swaggerUi.setup(openapiSpecification))
+        this.app.get("/docs", swaggerUi.setup(openapiSpecification, {customCssUrl:"https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.3.0/swagger-ui.css"}))
         this.initMiddlewares();
         this.initRoutes();
         this.runServer();
