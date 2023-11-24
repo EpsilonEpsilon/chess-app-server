@@ -19,8 +19,9 @@ class App{
         this.app =  express();
     }
     public bootstrap(){
+        const css = require("../node_modules/swagger-ui-dist/swagger-ui.css");
         this.app.use("/docs", swaggerUi.serve)
-        this.app.get("/docs", swaggerUi.setup(openapiSpecification, {customCssUrl:"https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.0.0/swagger-ui.css"}))
+        this.app.get("/docs", swaggerUi.setup(openapiSpecification, {customCssUrl:"https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.0.0/swagger-ui.css", customCss:css}))
         this.initMiddlewares();
         this.initRoutes();
         this.runServer();
