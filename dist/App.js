@@ -20,8 +20,7 @@ class App {
         this.app = (0, express_1.default)();
     }
     bootstrap() {
-        this.app.use("/docs", swagger_ui_express_1.default.serve);
-        this.app.get("/docs", swagger_ui_express_1.default.setup(docs_1.openapiSpecification, { customCssUrl: "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.0.0/swagger-ui.css", customCss: "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.0.0/swagger-ui.css" }));
+        this.app.get("/docs", swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(docs_1.openapiSpecification, { customCssUrl: "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css" }));
         this.initMiddlewares();
         this.initRoutes();
         this.runServer();
