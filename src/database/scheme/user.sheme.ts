@@ -33,9 +33,9 @@ const userDataSchema = new mongoose.Schema<IUser>({
     },
     passwordConfirmation:{
         required:true,
-        type:String
+        type:String,
     }
-})
+}, {timestamps:true})
 
 userDataSchema.pre("save", async function(next){
     try{

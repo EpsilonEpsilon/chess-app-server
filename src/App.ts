@@ -8,6 +8,9 @@ import fileUpload from "express-fileupload";
 import cors from "cors"
 import swaggerUi from "swagger-ui-express";
 import {openapiSpecification} from "./docs";
+import * as http from "http";
+
+
 const PORT =  process.env.PORT
 class App{
     private app:Express
@@ -17,7 +20,7 @@ class App{
     }
     public bootstrap(){
         this.app.use("/docs", swaggerUi.serve)
-        this.app.get("/docs", swaggerUi.setup(openapiSpecification, {customCssUrl:"https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.css"}))
+        this.app.get("/docs", swaggerUi.setup(openapiSpecification, {customCssUrl:"https://raw.githubusercontent.com/ostranme/swagger-ui-themes/develop/themes/3.x/theme-newspaper.css"}))
         this.initMiddlewares();
         this.initRoutes();
         this.runServer();

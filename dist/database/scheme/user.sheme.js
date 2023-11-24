@@ -37,9 +37,9 @@ const userDataSchema = new mongoose_1.default.Schema({
     },
     passwordConfirmation: {
         required: true,
-        type: String
+        type: String,
     }
-});
+}, { timestamps: true });
 userDataSchema.pre("save", function (next) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
